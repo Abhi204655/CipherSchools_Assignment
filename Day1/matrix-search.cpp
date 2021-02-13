@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool findKey(vector<vector<int>> &mat, int key)
+vector<int> findKey(vector<vector<int>> &mat, int key)
 {
     int n = mat.size();
     int m = mat[0].size();
@@ -12,7 +12,7 @@ bool findKey(vector<vector<int>> &mat, int key)
     {
         if (mat[i][j] == key)
         {
-            return true;
+            return {i, j};
         }
         if (mat[i][j] > key)
         {
@@ -23,7 +23,7 @@ bool findKey(vector<vector<int>> &mat, int key)
             i++;
         }
     }
-    return false;
+    return {};
 }
 
 int main()
@@ -36,13 +36,15 @@ int main()
     int key;
     cin >> key;
 
-    if (findKey(mat, key))
+    vector<int> res = findKey(mat, key);
+
+    if (res.size() > 0)
     {
-        cout << "The element is present in the matrix.";
+        cout << "The element is present in the matrix : (" << res[0] + 1 << "," << res[1] + 1 << ")" << endl;
     }
     else
     {
-        cout << "The element is not present in the matrix.";
+        cout << "The element is not present in the matrix." << endl;
     }
 
     return 0;
