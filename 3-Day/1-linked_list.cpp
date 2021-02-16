@@ -74,10 +74,9 @@ public:
         }
         head = prev;
     }
-    void cloneList()
+    LinkedList cloneList()
     {
         Node *original = head;
-
         while (original != NULL && original->next != NULL)
         {
             Node *next = new Node(original->data);
