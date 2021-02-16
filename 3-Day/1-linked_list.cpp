@@ -74,6 +74,20 @@ public:
         }
         head = prev;
     }
+    void cloneList()
+    {
+        Node *original = head;
+
+        while (original != NULL && original->next != NULL)
+        {
+            Node *next = new Node(original->data);
+            next->next = original->next;
+            original->next = next;
+            original = original->next->next;
+        }
+        Node *temp = new Node(original->data);
+        original->next = temp;
+    }
 };
 
 int main()
@@ -87,5 +101,8 @@ int main()
     ll.PrintList();
     ll.reverse();
     ll.PrintList();
+    ll.cloneList();
+    ll.PrintList();
+
     return 0;
 }
